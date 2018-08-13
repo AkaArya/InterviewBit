@@ -1,0 +1,21 @@
+class Solution:
+    # @param A : list of integers
+    # @param B : list of integers
+    # @return an integer
+    def coverPoints(self, A, B):
+        count=0
+        for i in range(len(A)-1):
+            if(A[i]<A[i+1]):
+                dif1=A[i+1]-A[i]
+            else:
+                dif1=A[i]-A[i+1]
+            if(B[i]<B[i+1]):
+                dif2=B[i+1]-B[i]
+            else:
+                dif2=B[i]-B[i+1]
+            if dif1==dif2:
+                count+=dif1
+            else:
+                count+=max(dif1,dif2)
+                
+        return count

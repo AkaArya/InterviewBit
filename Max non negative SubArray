@@ -1,0 +1,32 @@
+class Solution:
+    # @param A : list of integers
+    # @return a list of integers
+    
+    def maxset(self, A):
+        maxf=-1
+        sumf=0
+        B=[]
+        C=[]
+        i=0
+        for i in range(i,len(A)):
+            if A[i]>=0:
+                sumf=sumf+A[i]
+                B.append(A[i])
+                i+=1
+            else:
+                i=i+1
+                if sumf>maxf:
+                    maxf=sumf
+                    C=B
+                elif sumf==maxf:
+                    if len(B)>len(C):
+                        C=B               
+                B=[]
+                sumf=0
+        if sumf>maxf:
+            maxf=sumf
+            C=B
+        elif sumf==maxf:
+            if len(B)>len(C):
+                C=B
+        return C

@@ -1,0 +1,29 @@
+class Solution:
+    # @param A : tuple of list of integers
+    # @return a list of integers
+    def spiralOrder(self, A):
+        B=[]
+        m,n,t=len(A),len(A[0]),0
+        b,l,r,direc=m-1,0,n-1,0
+        
+        while(t<=b and l<=r):
+            if direc==0:
+                B=[A[t][i] for i in range(l,r+1)]  
+                t+=1
+                direc=1
+            elif direc==1:
+                for i in range(t,b+1):
+                    B.append(A[i][r])
+                r-=1
+                direc=2
+            elif direc==2:
+                for i in  range(r,l-1,-1):
+                    B.append(A[b][i])
+                b-=1
+                direc=3
+            else:
+                for i in range(b,t-1,-1):
+                    B.append(A[i][l])
+                l+=1
+                direc=0
+        return B
